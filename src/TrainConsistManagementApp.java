@@ -1,39 +1,41 @@
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class TrainConsistManagementApp {
 
     public static void main(String[] args) {
-        // Step 1: Create an ArrayList for passenger bogies
-        ArrayList<String> passengerBogies = new ArrayList<>();
+        // -------------------------
+        // UC4: Maintain Ordered Bogie IDs with LinkedList
+        // -------------------------
+        LinkedList<String> trainConsist = new LinkedList<>();
 
-        // Step 2: Add bogies
-        passengerBogies.add("Sleeper");
-        passengerBogies.add("AC Chair");
-        passengerBogies.add("First Class");
+        // Add bogies in order
+        trainConsist.add("Engine");
+        trainConsist.add("Sleeper");
+        trainConsist.add("AC");
+        trainConsist.add("Cargo");
+        trainConsist.add("Guard");
 
-        // Step 3: Print the list after insertion
-        System.out.println("Passenger Bogies after adding:");
-        for (String bogie : passengerBogies) {
+        // Display initial consist
+        System.out.println("Initial Train Consist:");
+        for (String bogie : trainConsist) {
             System.out.println(bogie);
         }
 
-        // Step 4: Remove one bogie (AC Chair)
-        passengerBogies.remove("AC Chair");
-        System.out.println("\nPassenger Bogies after removing AC Chair:");
-        for (String bogie : passengerBogies) {
+        // Insert Pantry Car at position 2 (0-based index)
+        trainConsist.add(2, "Pantry Car");
+
+        System.out.println("\nAfter inserting Pantry Car at position 2:");
+        for (String bogie : trainConsist) {
             System.out.println(bogie);
         }
 
-        // Step 5: Check if Sleeper bogie exists
-        if (passengerBogies.contains("Sleeper")) {
-            System.out.println("\nSleeper bogie exists in the train.");
-        } else {
-            System.out.println("\nSleeper bogie does NOT exist in the train.");
-        }
+        // Remove first and last bogie
+        trainConsist.removeFirst(); // Engine
+        trainConsist.removeLast();  // Guard
 
-        // Step 6: Print final list state
-        System.out.println("\nFinal Passenger Bogies in train:");
-        for (String bogie : passengerBogies) {
+        // Display final consist
+        System.out.println("\nFinal Train Consist after removing first and last bogies:");
+        for (String bogie : trainConsist) {
             System.out.println(bogie);
         }
     }
