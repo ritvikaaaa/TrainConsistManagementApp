@@ -1,42 +1,30 @@
-import java.util.LinkedList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TrainConsistManagementApp {
 
     public static void main(String[] args) {
         // -------------------------
-        // UC4: Maintain Ordered Bogie IDs with LinkedList
+        // UC6: Map Bogie to Capacity using HashMap
         // -------------------------
-        LinkedList<String> trainConsist = new LinkedList<>();
+        HashMap<String, Integer> bogieCapacity = new HashMap<>();
 
-        // Add bogies in order
-        trainConsist.add("Engine");
-        trainConsist.add("Sleeper");
-        trainConsist.add("AC");
-        trainConsist.add("Cargo");
-        trainConsist.add("Guard");
+        // Insert bogie capacities
+        bogieCapacity.put("Sleeper", 72);      // 72 seats
+        bogieCapacity.put("AC Chair", 120);   // 120 seats
+        bogieCapacity.put("First Class", 54); // 54 seats
 
-        // Display initial consist
-        System.out.println("Initial Train Consist:");
-        for (String bogie : trainConsist) {
-            System.out.println(bogie);
+        // Display bogie capacities
+        System.out.println("Bogie Capacities:");
+        for (Map.Entry<String, Integer> entry : bogieCapacity.entrySet()) {
+            System.out.println(entry.getKey() + " : " + entry.getValue() + " seats");
         }
 
-        // Insert Pantry Car at position 2 (0-based index)
-        trainConsist.add(2, "Pantry Car");
-
-        System.out.println("\nAfter inserting Pantry Car at position 2:");
-        for (String bogie : trainConsist) {
-            System.out.println(bogie);
-        }
-
-        // Remove first and last bogie
-        trainConsist.removeFirst(); // Engine
-        trainConsist.removeLast();  // Guard
-
-        // Display final consist
-        System.out.println("\nFinal Train Consist after removing first and last bogies:");
-        for (String bogie : trainConsist) {
-            System.out.println(bogie);
+        // Optional: lookup capacity of a specific bogie
+        String bogieToCheck = "AC Chair";
+        if (bogieCapacity.containsKey(bogieToCheck)) {
+            System.out.println("\nCapacity of " + bogieToCheck + " bogie is " +
+                    bogieCapacity.get(bogieToCheck) + " seats.");
         }
     }
 }
